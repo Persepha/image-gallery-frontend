@@ -1,0 +1,146 @@
+.row {
+    display: flex;
+    gap: 1rem;
+}
+
+.primaryHeader {
+    align-items: center;
+    justify-content: space-between;
+
+    background-color: #313131;
+    height: 6rem;
+
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+}
+
+.logo {
+    margin: 1rem;
+}
+
+.srOnly {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+.primaryNavigation {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.active {
+    border-bottom: 2px solid white;
+}
+
+
+
+@media (max-width: 35rem) {
+    .primaryNavigation {
+        gap: 1.5em;
+
+        position: fixed;
+        z-index: 1000;
+        inset: 0 0 0 30%;
+
+        background: hsl(0 0% 0% / 0.75);
+
+        flex-direction: column;
+        padding: min(30vh, 10rem) 2em;
+
+        transform: translateX(100%);
+        transition: transform 350ms ease-out;
+    }
+
+    @supports (backdrop-filter: blur(1rem)) {
+        .primaryNavigation {
+            background-color: hsl(0 0% 0% / 0.5);
+            backdrop-filter: blur(1rem);
+        }
+    }
+
+    .primaryNavigation[data-visible="true"] {
+        transform: translateX(0%);
+    }
+
+
+    .burger {
+        z-index: 9999;
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        width: 3rem;
+        height: 2rem;
+        cursor: pointer;
+    }
+
+    .burger:before {
+        content: '';
+        position: absolute;
+        background-color: #fff;
+        width: 100%;
+        height: 3px;
+        top: 0;
+        transition: .2s all;
+    }
+
+    .burger:after {
+        content: '';
+        position: absolute;
+        background-color: #fff;
+        width: 100%;
+        height: 3px;
+        bottom: 0;
+        transition: .2s all;
+    }
+
+    .burger i {
+        opacity: 1;
+        position: absolute;
+        background-color: #fff;
+        width: 100%;
+        height: 3px;
+        top: 50%;
+        right: 0;
+        transform: translateY(-50%);
+        transition: .2S all;
+    }
+
+    .burger:hover i {
+        width: 90%;
+        transition: .2S all;
+    }
+
+    .burgerActive i {
+        opacity: 0 !important;
+        width: 0 !important;
+    }
+
+    .burgerActive:before {
+        top: 50% !important;
+        transform: rotate(45deg);
+        border-radius: 3px;
+        transition: .2s all;
+    }
+
+    .burgerActive:after {
+        top: 50% !important;
+        transform: rotate(-45deg);
+        border-radius: 3px;
+        transition: .2s all;
+    }
+}
+
+@media (min-width: 35em) {
+    .primaryNavigation {
+        padding-inline: 3rem;
+    }
+}
