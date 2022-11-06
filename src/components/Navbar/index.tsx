@@ -3,6 +3,7 @@ import { FC, useState } from "react";
 import classnames from "classnames";
 
 import styles from "./Navbar.module.css";
+import { NavbarLink } from "./NavbarLink";
 
 export const Navbar: FC = () => {
   const [navVisibility, setNavVisibility] = useState<boolean>(false);
@@ -13,8 +14,8 @@ export const Navbar: FC = () => {
 
   return (
     <header className={classnames(styles.primaryHeader, styles.row)}>
-      <div className={classnames(styles.logo, styles.hoverAnimation)}>
-        IGallery
+      <div className={styles.logo}>
+        <NavbarLink toRoute="/">IGallery</NavbarLink>
       </div>
       <div
         className={classnames(styles.burger, {
@@ -33,10 +34,9 @@ export const Navbar: FC = () => {
           data-visible={navVisibility}
           className={classnames(styles.primaryNavigation, styles.row)}
         >
-          <li className={classnames(styles.hoverAnimation, styles.active)}>
-            home
+          <li>
+            <NavbarLink toRoute="about">about</NavbarLink>
           </li>
-          <li className={styles.hoverAnimation}>test</li>
         </ul>
       </nav>
     </header>
