@@ -2,11 +2,15 @@
 
 
 :root {
-    --primary-background-color: #525252;
-    --secondary-background-color: #3d3d3d;
+    --primary-1-background-color: #0F0F0F;
+    --primary-2-background-color: #3A3A3A;
+    --secondary-background-color: #F2ECFF;
+    --accent-color: #00C896;
     --color-alt: white;
+
     --font-family: 'Roboto', sans-serif;
     --font-size-sm: 1.6rem;
+
     --gap: 1rem;
     --margin-sm: 2rem;
     --margin-md: 3rem;
@@ -29,7 +33,7 @@ body {
     line-height: 1.5;
     min-height: 100vh;
 
-    background-color: var(--primary-background-color);
+    background-color: var(--primary-2-background-color);
     overflow-x: hidden;
 }
 

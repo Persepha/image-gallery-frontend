@@ -13,7 +13,9 @@ export const Navbar: FC = () => {
 
   return (
     <header className={classnames(styles.primaryHeader, styles.row)}>
-      <div className={styles.logo}>IG</div>
+      <div className={classnames(styles.logo, styles.hoverAnimation)}>
+        IGallery
+      </div>
       <div
         className={classnames(styles.burger, {
           [styles.burgerActive]: navVisibility,
@@ -31,8 +33,10 @@ export const Navbar: FC = () => {
           data-visible={navVisibility}
           className={classnames(styles.primaryNavigation, styles.row)}
         >
-          <li className={styles.active}>home</li>
-          <li>test</li>
+          <li className={classnames(styles.hoverAnimation, styles.active)}>
+            home
+          </li>
+          <li className={styles.hoverAnimation}>test</li>
         </ul>
       </nav>
     </header>

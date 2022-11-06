@@ -7,7 +7,7 @@
     align-items: center;
     justify-content: space-between;
 
-    background-color: #313131;
+    background-color: var(--primary-1-background-color);
     height: 6rem;
 
     position: -webkit-sticky;
@@ -18,6 +18,28 @@
 .logo {
     margin: 1rem;
 }
+
+/* hover-animation */
+.hoverAnimation {
+    position: relative;
+}
+.hoverAnimation:after {
+    content: "";
+    position: absolute;
+    width: 100%;
+    transform: scaleX(0);
+    height: 2px;
+    bottom: -1px;
+    left: 0;
+    background-color: var(--accent-color);
+    transform-origin: bottom right;
+    transition: transform 0.25s ease-out;
+}
+.hoverAnimation:hover:after, .hoverAnimation.active:after{
+    transform:scaleX(1);
+    transform-origin: bottom left;
+}
+
 
 .srOnly {
     position: absolute;
@@ -36,12 +58,6 @@
     padding: 0;
     margin: 0;
 }
-
-.active {
-    border-bottom: 2px solid white;
-}
-
-
 
 @media (max-width: 35rem) {
     .primaryNavigation {
@@ -142,5 +158,6 @@
 @media (min-width: 35em) {
     .primaryNavigation {
         padding-inline: 3rem;
+        align-items: center;
     }
 }
