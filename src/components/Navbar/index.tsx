@@ -1,9 +1,11 @@
 import { FC, useState } from "react";
 
-import classnames from "classnames";
+import { Link } from "react-router-dom";
+import cn from "classnames";
 
 import styles from "./Navbar.module.css";
 import { NavbarLink } from "./NavbarLink";
+import { SearchBar } from "../SearchBar";
 
 export const Navbar: FC = () => {
   const [navVisibility, setNavVisibility] = useState<boolean>(false);
@@ -13,12 +15,14 @@ export const Navbar: FC = () => {
   };
 
   return (
-    <header className={classnames(styles.primaryHeader, styles.row)}>
+    <header className={cn(styles.primaryHeader, styles.row)}>
       <div className={styles.logo}>
-        <NavbarLink toRoute="/">IGallery</NavbarLink>
+        <Link to="/" className={styles.navlinkText}>
+          IGallery
+        </Link>
       </div>
       <div
-        className={classnames(styles.burger, {
+        className={cn(styles.burger, {
           [styles.burgerActive]: navVisibility,
         })}
         aria-controls="primary-navigation"
@@ -32,10 +36,16 @@ export const Navbar: FC = () => {
         <ul
           id="primary-navigation"
           data-visible={navVisibility}
-          className={classnames(styles.primaryNavigation, styles.row)}
+          className={cn(styles.primaryNavigation, styles.row)}
         >
           <li>
+            <NavbarLink toRoute="/">home</NavbarLink>
+          </li>
+          <li>
             <NavbarLink toRoute="about">about</NavbarLink>
+          </li>
+          <li>
+            <SearchBar />
           </li>
         </ul>
       </nav>

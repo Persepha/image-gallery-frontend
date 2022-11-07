@@ -1,0 +1,29 @@
+.searchGroup {
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+.input {
+    padding: 0.8rem 0.8rem 0.8rem 3.7rem;
+    width: 100%;
+    outline: none;
+    border: none;
+    overflow: hidden;
+    margin: 0;
+    border-radius: 45px;
+    transition: all 0.3s ease 0s;
+    background-color: var(--secondary-background-color);
+}
+
+.input:focus, input:hover {
+    box-shadow: 0 0 0 3px var(--accent-color)
+}
+
+.icon {
+    position: absolute;
+    left: 1rem;
+    width: 2rem;
+    height: 2rem;
+    fill: var(--secondary-background-color);
+}
