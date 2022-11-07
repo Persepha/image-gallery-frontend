@@ -6,9 +6,7 @@ export const Root: FC = () => {
   return (
     <div className="App">
       <Navbar />
-      <div className="content">
-        <Outlet />
-      </div>
+      <Outlet />
     </div>
   );
 };
