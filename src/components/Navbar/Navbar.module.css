@@ -23,6 +23,8 @@
 .navlinkText {
     text-decoration: none;
     color: var(--color-alt);
+    display: inline-block;
+    width: 100%;
 }
 
 

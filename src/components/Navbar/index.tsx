@@ -6,6 +6,7 @@ import cn from "classnames";
 import styles from "./Navbar.module.css";
 import { NavbarLink } from "./NavbarLink";
 import { SearchBar } from "../SearchBar";
+import { UserMenu } from "../UserMenu";
 
 export const Navbar: FC = () => {
   const [navVisibility, setNavVisibility] = useState<boolean>(false);
@@ -47,6 +48,7 @@ export const Navbar: FC = () => {
           <li>
             <SearchBar />
           </li>
+          <UserMenu />
         </ul>
       </nav>
     </header>
