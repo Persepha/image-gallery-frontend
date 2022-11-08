@@ -1,0 +1,15 @@
+.image img {
+    width: 100%;
+    /* border: 2px solid transparent;*/
+    transition: .3s;
+}
+
+.image:hover img {
+    box-shadow: 0 0 18px 0 var(--accent-color);
+}
+
+.image {
+    display: block;
+    margin-bottom: 10px;
+    width: 100%;
+}
