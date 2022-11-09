@@ -1,16 +1,21 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { GalleryResponse, Image } from "./types";
+import { FilterGalleryParams, GalleryResponse, Image } from "./types";
 import axios, { AxiosError } from "axios";
 import { GALLERY_URL } from "../../consts/api/apiUrl";
 import { ErrorResponse } from "../../consts/api/types";
 
 export const gallery = createAsyncThunk<
   GalleryResponse<Image>,
-  void,
+  FilterGalleryParams,
   { rejectValue: ErrorResponse }
 >("gallery/fetchAll", async (args, thunkAPI) => {
   try {
-    const { data } = await axios.get<GalleryResponse<Image>>(GALLERY_URL);
+    const { data } = await axios.get<GalleryResponse<Image>>(GALLERY_URL, {
+      params: {
+        limit: args.limit,
+        offset: args.offset,
+      },
+    });
     return data;
   } catch (error) {
     if (error instanceof AxiosError) {

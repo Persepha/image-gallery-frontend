@@ -6,9 +6,11 @@ import {
 } from "@reduxjs/toolkit";
 
 import galleryReducer from "./gallery/slice";
+import filterReducer from "./filter/slice";
 
 const rootReducer = combineReducers({
   galleryReducer,
+  filterReducer,
 });
 
 export const store = configureStore({

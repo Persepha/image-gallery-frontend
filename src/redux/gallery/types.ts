@@ -26,3 +26,8 @@ export interface GalleryState {
   error: string;
   data: GalleryResponse<Image> | null;
 }
+
+export interface FilterGalleryParams {
+  limit: number;
+  offset: number;
+}
