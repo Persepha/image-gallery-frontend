@@ -8,6 +8,7 @@
     transition: all 0.3s ease 0s;
     cursor: pointer;
     outline: none;
+    white-space: nowrap;
 }
 
 .button:hover {

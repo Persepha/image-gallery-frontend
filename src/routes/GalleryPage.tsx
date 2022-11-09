@@ -3,6 +3,7 @@ import { useAppDispatch, useAppSelector } from "../hooks/redux";
 import { gallery } from "../redux/gallery/actionCreators";
 import { Gallery } from "../components";
 import { Pagination } from "../components/Pagination";
+import { Loader } from "../components/Loader";
 
 export const GalleryPage: FC = () => {
   const dispatch = useAppDispatch();
@@ -24,7 +25,7 @@ export const GalleryPage: FC = () => {
 
   return (
     <>
-      <div className="ctr">{isLoading && <h1>Loading...</h1>}</div>
+      <div className="ctr">{isLoading && <Loader />}</div>
       {error && <h1>{error}</h1>}
       {data && (
         <>
