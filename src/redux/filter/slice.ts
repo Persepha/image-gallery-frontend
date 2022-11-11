@@ -3,7 +3,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 const initialState: FilterState = {
   currentPage: 1,
-  limit: 2,
+  limit: 20,
   offset: 0,
 };
 

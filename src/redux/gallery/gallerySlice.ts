@@ -8,7 +8,7 @@ const initialState: GalleryState = {
   data: null,
 };
 
-export const slice = createSlice({
+export const gallerySlice = createSlice({
   name: "gallery",
   initialState,
   reducers: {},
@@ -28,4 +28,4 @@ export const slice = createSlice({
   },
 });
 
-export default slice.reducer;
+export default gallerySlice.reducer;

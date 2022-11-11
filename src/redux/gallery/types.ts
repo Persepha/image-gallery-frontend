@@ -27,7 +27,17 @@ export interface GalleryState {
   data: GalleryResponse<Image> | null;
 }
 
+export interface ImageDetailState {
+  isLoading: boolean;
+  error: string;
+  imageDetail: Image | null;
+}
+
 export interface FilterGalleryParams {
   limit: number;
   offset: number;
+}
+
+export interface GalleryImageParams {
+  slug: string;
 }
