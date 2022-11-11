@@ -8,7 +8,12 @@ export const Gallery: FC<GalleryProps> = ({ images }) => {
   return (
     <div className={styles.masonry}>
       {images.map((image) => (
-        <Image key={image.id} name={image.name} url={image.url} />
+        <Image
+          key={image.id}
+          name={image.name}
+          slug={image.slug}
+          url={image.url}
+        />
       ))}
     </div>
   );
