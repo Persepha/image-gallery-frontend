@@ -1,0 +1,58 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 100%;
+}
+
+.imageContainer {
+    padding: 20px;
+    flex-basis: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.image {
+    max-width: 100%;
+    height: auto;
+}
+
+.info {
+    background-color: var(--primary-1-background-color);
+    padding: 2rem;
+}
+
+@media only screen and (min-width: 70rem) {
+    .container {
+        flex-direction: row;
+    }
+
+    .info {
+        flex-shrink: 0;
+
+        width: 35rem;
+        height: calc(100vh - 6rem);
+        position: sticky;
+        z-index: 2;
+        top: 0;
+        right: 0;
+        overflow: auto;
+    }
+}
+
+.tagsContainer{
+    display: flex;
+    flex-wrap: wrap;
+    padding: 2rem 0;
+    gap: 0.5rem
+}
+
+.highlight {
+    background-color: var(--accent-color);
+    border-radius: 6px;
+    padding: 3px 6px;
+    font-size: 2rem;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+}
