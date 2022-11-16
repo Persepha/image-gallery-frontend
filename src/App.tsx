@@ -7,6 +7,7 @@ import {
   GalleryPage,
   ImageDetailPage,
   LoginPage,
+  RegistrationPage,
 } from "./routes";
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Route path="images/:slug" element={<ImageDetailPage />} />
         <Route path="about" element={<div>about</div>} />
         <Route path="login" element={<LoginPage />} />
+        <Route path="signup" element={<RegistrationPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>

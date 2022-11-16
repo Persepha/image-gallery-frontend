@@ -1,7 +1,9 @@
 import { FC, useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../hooks/redux";
-import { galleryImage } from "../redux/gallery/actionCreators";
+
 import { useParams } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../hooks/redux";
+
+import { galleryImage } from "../redux/gallery/actionCreators";
 import { Loader } from "../components/Loader";
 import { ImageDetail } from "../components/ImageDetail";
 

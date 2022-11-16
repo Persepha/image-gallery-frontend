@@ -11,7 +11,9 @@ export const GuestNav: FC = () => {
         </Link>
       </li>
       <li>
-        <NavbarButton>Sign up</NavbarButton>
+        <Link to="/signup">
+          <NavbarButton>Sign up</NavbarButton>
+        </Link>
       </li>
     </>
   );

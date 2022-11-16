@@ -20,7 +20,7 @@
     margin: 5rem 0;
     padding: 4rem 2rem;
     background: var(--primary-1-background-color);
-    width: clamp(30rem, 50%, 60rem);
+    width: clamp(40rem, 50%, 60rem);
 }
 
 
