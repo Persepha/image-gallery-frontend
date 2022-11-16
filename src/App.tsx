@@ -1,7 +1,13 @@
 import React from "react";
 import "./App.css";
 import { Route, Routes } from "react-router-dom";
-import { NotFoundPage, Root, GalleryPage, ImageDetailPage } from "./routes";
+import {
+  NotFoundPage,
+  Root,
+  GalleryPage,
+  ImageDetailPage,
+  LoginPage,
+} from "./routes";
 
 function App() {
   return (
@@ -10,6 +16,7 @@ function App() {
         <Route path="" element={<GalleryPage />} />
         <Route path="images/:slug" element={<ImageDetailPage />} />
         <Route path="about" element={<div>about</div>} />
+        <Route path="login" element={<LoginPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>

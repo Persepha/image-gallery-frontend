@@ -1,6 +1,6 @@
 .button {
     padding: 0.8rem 1.5rem;
-    width: 100%;
+    letter-spacing: 1px;
     color: #000;
     background-color: var(--secondary-background-color);
     border: 3px solid var(--accent-color);
@@ -8,6 +8,8 @@
     transition: all 0.3s ease 0s;
     cursor: pointer;
     outline: none;
+    white-space: nowrap;
+    width: 100%;
 }
 
 .button:hover {

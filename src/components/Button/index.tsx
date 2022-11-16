@@ -1,16 +1,11 @@
-import { FC, ReactNode, MouseEvent } from "react";
-
+import { FC } from "react";
+import { ButtonProps } from "./Button.props";
 import styles from "./Button.module.css";
 
-interface ButtonProps {
-  children: ReactNode;
-  onClick?: (event: MouseEvent<HTMLButtonElement>) => void;
-}
-
-export const Button: FC<ButtonProps> = ({ children, onClick }) => {
+export const Button: FC<ButtonProps> = ({ ...props }) => {
   return (
-    <button className={styles.button} onClick={onClick}>
-      {children}
+    <button className={styles.button} {...props}>
+      {props.children}
     </button>
   );
 };

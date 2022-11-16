@@ -1,0 +1,89 @@
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.info {
+    text-align: center;
+}
+
+.required {
+    color: #db504a;
+}
+
+.button {
+    margin-top: 5rem;
+}
+
+.authForm {
+    margin: 5rem 0;
+    padding: 4rem 2rem;
+    background: var(--primary-1-background-color);
+    width: clamp(30rem, 50%, 60rem);
+}
+
+
+.field {
+    width: 100%;
+    border-bottom: 3px dashed var(--secondary-background-color);
+    margin: 6rem auto 1rem;
+}
+
+.field:has(.invalid) {
+    border-bottom: 3px dashed #db504a;
+}
+
+.input {
+    outline: none;
+    border: none;
+    overflow: hidden;
+    margin: 0;
+    width: 100%;
+    background: none;
+    padding: 0.25rem 0;
+    font-weight: bold;
+    color: var(--secondary-background-color);
+    font-size: 2rem;
+}
+
+
+.input:has(.invalid) {
+    color: #db504a;
+}
+
+.invalid {
+    color: #db504a;
+}
+
+.field::after{
+    content: "";
+    position: relative;
+    display: block;
+    height: 4px;
+    width: 100%;
+    background: var(--accent-color);
+    transform: scaleX(0);
+    transform-origin: 0;
+    transition: transform 500ms ease;
+    top: 3px;
+}
+
+.field:focus-within {
+    border-color: transparent;
+}
+
+.field:focus-within::after {
+    transform: scaleX(1);
+}
+
+.label {
+    font-size: 2rem;
+    pointer-events: none;
+    color: var(--secondary-background-color);
+    transition: all 350ms;
+}
+
+.field:focus-within .label {
+    color: var(--accent-color);
+}
