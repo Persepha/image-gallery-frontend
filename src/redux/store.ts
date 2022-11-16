@@ -8,15 +8,20 @@ import {
 import galleryReducer from "./gallery/gallerySlice";
 import galleryImageDetailReducer from "./gallery/imageDetailSlice";
 import filterReducer from "./filter/slice";
+import authReducer from "./auth/slice";
+import { authMiddleware } from "../middlewares/authMiddleware";
 
 const rootReducer = combineReducers({
   galleryReducer,
   filterReducer,
   galleryImageDetailReducer,
+  authReducer,
 });
 
 export const store = configureStore({
   reducer: rootReducer,
+  middleware: (getDefaultMiddleware) =>
+    getDefaultMiddleware().concat(authMiddleware),
 });
 
 export type AppDispatch = typeof store.dispatch;

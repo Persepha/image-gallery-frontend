@@ -1,4 +1,6 @@
 export interface ErrorResponse {
   message: string;
-  extra: {};
+  extra: {
+    [key: string]: any;
+  };
 }
