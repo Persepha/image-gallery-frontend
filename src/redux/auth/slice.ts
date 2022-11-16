@@ -1,7 +1,8 @@
-import { LoginState } from "./types";
 import { createSlice } from "@reduxjs/toolkit";
-import { login, logout } from "./actionCreators";
+
+import { login, logout, registration } from "./actionCreators";
 import { getItem } from "../../utils/storage";
+import { LoginState } from "./types";
 
 const initialState: LoginState = {
   error: null,
@@ -46,6 +47,23 @@ export const slice = createSlice({
     builder.addCase(logout.rejected, (state, action) => {
       state.isLoading = false;
       state.error = action.payload!;
+    });
+
+    builder.addCase(registration.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.error = null;
+      state.token = action.payload.key;
+      state.isAuthenticated = true;
+      state.username = action.payload.profile.username;
+    });
+    builder.addCase(registration.pending, (state) => {
+      state.isLoading = true;
+      state.isAuthenticated = false;
+    });
+    builder.addCase(registration.rejected, (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload!;
+      state.isAuthenticated = false;
     });
   },
 });

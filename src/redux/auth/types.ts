@@ -22,3 +22,10 @@ export interface LoginParams {
   username: string;
   password: string;
 }
+
+export interface RegistrationParams {
+  username: string;
+  password1: string;
+  password2: string;
+  email: string;
+}
