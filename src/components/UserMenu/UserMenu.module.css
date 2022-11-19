@@ -1,0 +1,25 @@
+.item {
+    height: calc(var(--header-height) * 0.6);
+    width: calc(var(--header-height) * 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+}
+
+.item:hover .icon{
+    stroke: var(--secondary-background-color);
+}
+
+.iconButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon {
+    width: 2rem;
+    height: 2rem;
+    stroke: var(--primary-1-background-color);
+}
