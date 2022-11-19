@@ -8,7 +8,7 @@
     justify-content: space-between;
 
     background-color: var(--primary-1-background-color);
-    height: 6rem;
+    height: var(--header-height);
 
     position: -webkit-sticky;
     position: sticky;
@@ -28,6 +28,10 @@
     width: 100%;
 }
 
+.divider {
+    border-left: 2px solid var(--secondary-background-color);
+    height: calc(var(--header-height) * 0.6);
+}
 
 /* hover-animation */
 .hoverAnimation {

@@ -14,6 +14,8 @@
     --gap: 1rem;
     --margin-sm: 2rem;
     --margin-md: 3rem;
+
+    --header-height: 6rem;
 }
 
 * {
@@ -36,6 +38,18 @@ body {
 
     background-color: var(--primary-2-background-color);
     overflow-x: hidden;
+}
+
+body::-webkit-scrollbar {
+    width: 0.45rem;
+}
+
+body::-webkit-scrollbar-track {
+    background: var(--primary-1-background-color);
+}
+
+body::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
 }
 
 .App {

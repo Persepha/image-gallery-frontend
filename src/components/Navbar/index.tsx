@@ -48,6 +48,7 @@ export const Navbar: FC = () => {
           <li>
             <SearchBar />
           </li>
+          <div className={styles.divider}></div>
           <UserMenu />
         </ul>
       </nav>
