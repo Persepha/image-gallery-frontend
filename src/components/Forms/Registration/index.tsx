@@ -9,7 +9,7 @@ import { registration } from "../../../redux/auth/actionCreators";
 import { Loader } from "../../Loader";
 import { Button } from "../../Button";
 import cn from "classnames";
-import styles from "../Auth.module.css";
+import styles from "../Form.module.css";
 
 export const Registration: FC = () => {
   const dispatch = useAppDispatch();
@@ -26,14 +26,7 @@ export const Registration: FC = () => {
 
   const onSubmit: SubmitHandler<RegistrationFormInput> = async (data) => {
     console.log(data);
-    const authResult = await dispatch(
-      registration({
-        username: data.username,
-        password1: data.password1,
-        password2: data.password2,
-        email: data.email,
-      })
-    );
+    const authResult = await dispatch(registration(data));
 
     if (registration.fulfilled.match(authResult)) {
       return navigate("/");
@@ -41,7 +34,6 @@ export const Registration: FC = () => {
 
     if (registration.rejected.match(authResult)) {
       const error = authResult.payload;
-      console.log(error);
 
       error?.extra?.fields?.username &&
         setError(
@@ -95,12 +87,14 @@ export const Registration: FC = () => {
     }
   };
 
-  console.log(errors);
-
   return (
     <div className={styles.container}>
-      <div className={styles.authForm}>
-        <div className="ctr">{isLoading && <Loader />}</div>
+      <div className={styles.form}>
+        {isLoading && (
+          <div className={styles.container}>
+            <Loader />
+          </div>
+        )}
 
         <h1 className={styles.info}>Registration</h1>
 

@@ -9,14 +9,14 @@
 }
 
 .required {
-    color: #db504a;
+    color: var(--error-color);
 }
 
 .button {
     margin-top: 5rem;
 }
 
-.authForm {
+.form {
     margin: 5rem 0;
     padding: 4rem 2rem;
     background: var(--primary-1-background-color);
@@ -31,7 +31,7 @@
 }
 
 .field:has(.invalid) {
-    border-bottom: 3px dashed #db504a;
+    border-bottom: 3px dashed var(--error-color);
 }
 
 .input {
@@ -48,12 +48,8 @@
 }
 
 
-.input:has(.invalid) {
-    color: #db504a;
-}
-
 .invalid {
-    color: #db504a;
+    color: var(--error-color);
 }
 
 .field::after{

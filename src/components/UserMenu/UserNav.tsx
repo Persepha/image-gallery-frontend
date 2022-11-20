@@ -16,7 +16,7 @@ export const UserNav: FC = () => {
   return (
     <>
       <li className={styles.item}>
-        <Link to={"/"} className={styles.iconButton}>
+        <Link to={"/images/create/"} className={styles.iconButton}>
           <svg
             className={styles.icon}
             xmlns="http://www.w3.org/2000/svg"

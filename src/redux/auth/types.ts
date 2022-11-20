@@ -29,3 +29,10 @@ export interface RegistrationParams {
   password2: string;
   email: string;
 }
+
+export interface NewImageParams {
+  name: string;
+  url: string;
+  slug?: string;
+  tags?: string;
+}

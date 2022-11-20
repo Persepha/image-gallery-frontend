@@ -5,7 +5,7 @@ import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
 import { login } from "../../../redux/auth/actionCreators";
 
 import cn from "classnames";
-import styles from "../Auth.module.css";
+import styles from "../Form.module.css";
 import { Loader } from "../../Loader";
 import { Button } from "../../Button";
 import { useNavigate } from "react-router-dom";
@@ -24,9 +24,7 @@ export const Login: FC = () => {
   } = useForm<LoginFormInput>();
 
   const onSubmit: SubmitHandler<LoginFormInput> = async (data) => {
-    const authResult = await dispatch(
-      login({ username: data.username, password: data.password })
-    );
+    const authResult = await dispatch(login(data));
 
     if (login.fulfilled.match(authResult)) {
       return navigate("/");
@@ -47,10 +45,15 @@ export const Login: FC = () => {
         );
     }
   };
+
   return (
     <div className={styles.container}>
-      <div className={styles.authForm}>
-        <div className="ctr">{isLoading && <Loader />}</div>
+      <div className={styles.form}>
+        {isLoading && (
+          <div className={styles.container}>
+            <Loader />
+          </div>
+        )}
 
         <h1 className={styles.info}>Login</h1>
 
