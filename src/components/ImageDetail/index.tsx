@@ -2,11 +2,13 @@ import { FC } from "react";
 
 import { ImageDetailProps } from "./ImageDetail.props";
 import styles from "./ImageDetail.module.css";
+import { EditMenu } from "../EditMenu";
 
 export const ImageDetail: FC<ImageDetailProps> = ({ imageDetail }) => {
   return (
     <div className={styles.container}>
       <div className={styles.imageContainer}>
+        <EditMenu />
         <img
           src={imageDetail.url}
           className={styles.image}

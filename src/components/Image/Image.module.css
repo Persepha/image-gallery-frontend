@@ -1,6 +1,5 @@
 .image img {
     width: 100%;
-    /* border: 2px solid transparent;*/
     transition: .3s;
 }
 
@@ -9,7 +8,17 @@
 }
 
 .image {
-    display: block;
+    display: inline-block;
     margin-bottom: 10px;
     width: 100%;
+    position: relative;
+}
+
+.imageEditButtons {
+    opacity: 0;
+    transition: all 0.15s ease-in-out;
+}
+
+.image:hover .imageEditButtons {
+    opacity: 1;
 }

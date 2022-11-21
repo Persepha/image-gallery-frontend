@@ -59,6 +59,11 @@ body::-webkit-scrollbar-thumb {
     height: 100%;
 }
 
+.container {
+    margin-top: var(--header-height);
+    height: 100%;
+}
+
 #root{
     height: 100%;
 }

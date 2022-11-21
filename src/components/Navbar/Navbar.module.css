@@ -10,9 +10,10 @@
     background-color: var(--primary-1-background-color);
     height: var(--header-height);
 
-    position: -webkit-sticky;
-    position: sticky;
-    top: 0;
+    position: fixed;
+    inset: 0 0 0 0;
+    z-index: 1000;
+
     flex-shrink: 0;
 }
 

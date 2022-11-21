@@ -1,3 +1,15 @@
+.editButtons  {
+    display: flex;
+    gap: 0.5rem;
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+
+    background-color: hsl(0 0% 0% / 0.85);
+    border-radius: 2rem;
+
+}
+
 .item {
     height: calc(var(--header-height) * 0.6);
     width: calc(var(--header-height) * 0.6);
@@ -5,11 +17,15 @@
     align-items: center;
     justify-content: center;
     border-radius: 50%;
-    background-color: var(--accent-color);
+    transition: all 0.3s ease 0s;
 }
 
-.item:hover .icon{
+.item:hover .createIcon{
     stroke: var(--secondary-background-color);
+}
+
+.item:hover {
+    background-color: var(--accent-color);
 }
 
 .iconButton {
@@ -21,5 +37,12 @@
 .icon {
     width: 2rem;
     height: 2rem;
+}
+
+.createIcon {
     stroke: var(--primary-1-background-color);
+}
+
+.createItem {
+    background-color: var(--accent-color);
 }
