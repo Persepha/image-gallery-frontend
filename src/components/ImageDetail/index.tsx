@@ -3,12 +3,16 @@ import { FC } from "react";
 import { ImageDetailProps } from "./ImageDetail.props";
 import styles from "./ImageDetail.module.css";
 import { EditMenu } from "../EditMenu";
+import { useAppSelector } from "../../hooks/redux";
 
 export const ImageDetail: FC<ImageDetailProps> = ({ imageDetail }) => {
+  const { username } = useAppSelector((state) => state.authReducer);
+
   return (
     <div className={styles.container}>
       <div className={styles.imageContainer}>
-        <EditMenu />
+        {username === imageDetail.owner_username && <EditMenu />}
+
         <img
           src={imageDetail.url}
           className={styles.image}

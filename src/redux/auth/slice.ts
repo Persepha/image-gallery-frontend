@@ -9,7 +9,7 @@ const initialState: LoginState = {
   isLoading: false,
   token: getItem("authToken"),
   isAuthenticated: getItem("isAuthenticated") || false,
-  username: null,
+  username: getItem("username"),
 };
 
 export const slice = createSlice({
