@@ -62,10 +62,31 @@ export const newGalleryImage = createAsyncThunk<
   void,
   NewImageParams,
   { rejectValue: ErrorResponse }
->("gallery/fetchGalleryImage", async (args, thunkAPI) => {
+>("gallery/createGalleryImage", async (args, thunkAPI) => {
   try {
     const { data } = await axios.post(GALLERY_NEW_IMAGE_URL, args);
     return data;
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      const message = error.response && error.response.data;
+      return thunkAPI.rejectWithValue(message);
+    }
+
+    return thunkAPI.rejectWithValue({
+      message: "Gallery image create error",
+      extra: {},
+    });
+  }
+});
+
+export const deleteGalleryImage = createAsyncThunk<
+  string,
+  GalleryImageParams,
+  { rejectValue: ErrorResponse }
+>("gallery/deleteGalleryImage", async (args, thunkAPI) => {
+  try {
+    await axios.delete(GALLERY_URL + args.slug + "/delete/");
+    return args.slug;
   } catch (error) {
     if (error instanceof AxiosError) {
       const message = error.response && error.response.data;

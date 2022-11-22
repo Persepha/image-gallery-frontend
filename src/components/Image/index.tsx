@@ -10,7 +10,7 @@ export const Image: FC<ImageProps> = ({ url, name, slug, isEditable }) => {
     <div className={styles.image}>
       {isEditable && (
         <div className={styles.imageEditButtons}>
-          <EditMenu />
+          <EditMenu slug={slug} />
         </div>
       )}
 

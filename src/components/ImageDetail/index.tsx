@@ -11,7 +11,9 @@ export const ImageDetail: FC<ImageDetailProps> = ({ imageDetail }) => {
   return (
     <div className={styles.container}>
       <div className={styles.imageContainer}>
-        {(isStaff || username === imageDetail.owner_username) && <EditMenu />}
+        {(isStaff || username === imageDetail.owner_username) && (
+          <EditMenu slug={imageDetail.slug} />
+        )}
 
         <img
           src={imageDetail.url}
