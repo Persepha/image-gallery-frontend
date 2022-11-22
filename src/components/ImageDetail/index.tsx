@@ -6,12 +6,12 @@ import { EditMenu } from "../EditMenu";
 import { useAppSelector } from "../../hooks/redux";
 
 export const ImageDetail: FC<ImageDetailProps> = ({ imageDetail }) => {
-  const { username } = useAppSelector((state) => state.authReducer);
+  const { username, isStaff } = useAppSelector((state) => state.authReducer);
 
   return (
     <div className={styles.container}>
       <div className={styles.imageContainer}>
-        {username === imageDetail.owner_username && <EditMenu />}
+        {(isStaff || username === imageDetail.owner_username) && <EditMenu />}
 
         <img
           src={imageDetail.url}

@@ -10,6 +10,7 @@ const initialState: LoginState = {
   token: getItem("authToken"),
   isAuthenticated: getItem("isAuthenticated") || false,
   username: getItem("username"),
+  isStaff: getItem("isStaff") || false,
 };
 
 export const slice = createSlice({
@@ -23,6 +24,7 @@ export const slice = createSlice({
       state.token = action.payload.key;
       state.isAuthenticated = true;
       state.username = action.payload.profile.username;
+      state.isStaff = action.payload.profile.is_staff;
     });
     builder.addCase(login.pending, (state) => {
       state.isLoading = true;
@@ -39,6 +41,7 @@ export const slice = createSlice({
       state.error = null;
       state.token = null;
       state.isAuthenticated = false;
+      state.isStaff = false;
       state.username = null;
     });
     builder.addCase(logout.pending, (state) => {
@@ -55,6 +58,7 @@ export const slice = createSlice({
       state.token = action.payload.key;
       state.isAuthenticated = true;
       state.username = action.payload.profile.username;
+      state.isStaff = action.payload.profile.is_staff;
     });
     builder.addCase(registration.pending, (state) => {
       state.isLoading = true;

@@ -6,7 +6,7 @@ import { Image } from "../Image";
 import { useAppSelector } from "../../hooks/redux";
 
 export const Gallery: FC<GalleryProps> = ({ images }) => {
-  const { username } = useAppSelector((state) => state.authReducer);
+  const { username, isStaff } = useAppSelector((state) => state.authReducer);
 
   return (
     <div className={styles.masonry}>
@@ -16,7 +16,7 @@ export const Gallery: FC<GalleryProps> = ({ images }) => {
           name={image.name}
           slug={image.slug}
           url={image.url}
-          isEditable={username === image.owner_username}
+          isEditable={isStaff || username === image.owner_username}
         />
       ))}
     </div>

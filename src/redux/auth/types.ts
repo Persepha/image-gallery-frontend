@@ -3,6 +3,7 @@ import { ErrorResponse } from "../../consts/api/types";
 export interface Profile {
   id: number;
   username: string;
+  is_staff: boolean;
 }
 
 export interface LoginResponse {
@@ -16,6 +17,7 @@ export interface LoginState {
   username: null | string;
   token: null | string;
   isAuthenticated: boolean;
+  isStaff: boolean;
 }
 
 export interface LoginParams {
