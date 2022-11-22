@@ -9,7 +9,7 @@ import { AxiosError } from "axios";
 import axios from "../../axios";
 import { GALLERY_NEW_IMAGE_URL, GALLERY_URL } from "../../consts/api/apiUrl";
 import { ErrorResponse } from "../../consts/api/types";
-import { NewImageParams } from "../auth/types";
+import { NewImageParams, UpdateImageParams } from "../auth/types";
 
 export const gallery = createAsyncThunk<
   GalleryResponse<Image>,
@@ -94,7 +94,31 @@ export const deleteGalleryImage = createAsyncThunk<
     }
 
     return thunkAPI.rejectWithValue({
-      message: "Gallery image create error",
+      message: "Gallery image delete error",
+      extra: {},
+    });
+  }
+});
+
+export const updateGalleryImage = createAsyncThunk<
+  void,
+  UpdateImageParams,
+  { rejectValue: ErrorResponse }
+>("gallery/updateGalleryImage", async (args, thunkAPI) => {
+  try {
+    const { data } = await axios.post(
+      GALLERY_URL + args.oldSlug + "/update/",
+      args
+    );
+    return data;
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      const message = error.response && error.response.data;
+      return thunkAPI.rejectWithValue(message);
+    }
+
+    return thunkAPI.rejectWithValue({
+      message: "Gallery image update error",
       extra: {},
     });
   }

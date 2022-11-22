@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { FC, useEffect } from "react";
 
 import { useAppDispatch, useAppSelector } from "../../../hooks/redux";
 import { useNavigate } from "react-router-dom";
@@ -8,10 +8,13 @@ import cn from "classnames";
 import styles from "../Form.module.css";
 import { Loader } from "../../Loader";
 import { Button } from "../../Button";
-import { newGalleryImage } from "../../../redux/gallery/actionCreators";
-import { NewImageFormInput } from "./NewImage.props";
+import {
+  newGalleryImage,
+  updateGalleryImage,
+} from "../../../redux/gallery/actionCreators";
+import { NewImageFormInput, NewImageProps } from "./NewImage.props";
 
-export const NewImage: FC = () => {
+export const NewImage: FC<NewImageProps> = ({ isUpdateImage, imageDetail }) => {
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
 
@@ -21,8 +24,18 @@ export const NewImage: FC = () => {
     register,
     handleSubmit,
     setError,
+    setValue,
     formState: { errors },
   } = useForm<NewImageFormInput>();
+
+  useEffect(() => {
+    if (isUpdateImage && imageDetail) {
+      setValue("name", imageDetail.name);
+      setValue("url", imageDetail.url);
+      setValue("slug", imageDetail.slug);
+      setValue("tags", imageDetail.tags.map((tag) => tag.title).join(", "));
+    }
+  });
 
   const onSubmit: SubmitHandler<NewImageFormInput> = async (data) => {
     const formValues = { ...data };
@@ -34,13 +47,19 @@ export const NewImage: FC = () => {
       delete formValues.tags;
     }
 
-    const result = await dispatch(newGalleryImage(formValues));
+    const result = isUpdateImage
+      ? await dispatch(
+          updateGalleryImage({ ...formValues, oldSlug: imageDetail?.slug! })
+        )
+      : await dispatch(newGalleryImage(formValues));
 
-    if (newGalleryImage.fulfilled.match(result)) {
+    const actionCreator = isUpdateImage ? updateGalleryImage : newGalleryImage;
+
+    if (actionCreator.fulfilled.match(result)) {
       return navigate("/");
     }
 
-    if (newGalleryImage.rejected.match(result)) {
+    if (actionCreator.rejected.match(result)) {
       const error = result.payload;
 
       error?.extra?.fields?.name &&
@@ -196,7 +215,7 @@ export const NewImage: FC = () => {
           )}
 
           <div className={styles.button}>
-            <Button type="submit">create</Button>
+            <Button type="submit">{isUpdateImage ? "update" : "create"}</Button>
           </div>
         </form>
       </div>

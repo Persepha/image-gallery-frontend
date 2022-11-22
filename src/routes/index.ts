@@ -5,3 +5,4 @@ export { ImageDetailPage } from "./ImageDetailPage";
 export { LoginPage } from "./LoginPage";
 export { RegistrationPage } from "./RegistrationPage";
 export { NewImagePage } from "./NewImagePage";
+export { UpdateImagePage } from "./UpdateImagePage";

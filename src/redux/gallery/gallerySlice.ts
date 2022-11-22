@@ -1,6 +1,11 @@
 import { GalleryState } from "./types";
 import { createSlice } from "@reduxjs/toolkit";
-import { deleteGalleryImage, gallery, newGalleryImage } from "./actionCreators";
+import {
+  deleteGalleryImage,
+  gallery,
+  newGalleryImage,
+  updateGalleryImage,
+} from "./actionCreators";
 
 const initialState: GalleryState = {
   error: "",
@@ -51,6 +56,18 @@ export const gallerySlice = createSlice({
       state.isLoading = true;
     });
     builder.addCase(deleteGalleryImage.rejected, (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload?.message!;
+    });
+
+    builder.addCase(updateGalleryImage.fulfilled, (state) => {
+      state.isLoading = false;
+      state.error = "";
+    });
+    builder.addCase(updateGalleryImage.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(updateGalleryImage.rejected, (state, action) => {
       state.isLoading = false;
       state.error = action.payload?.message!;
     });

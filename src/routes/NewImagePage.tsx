@@ -15,5 +15,5 @@ export const NewImagePage: FC = () => {
     }
   }, [isAuthenticated]);
 
-  return <NewImage />;
+  return <NewImage isUpdateImage={false} />;
 };

@@ -38,3 +38,11 @@ export interface NewImageParams {
   slug?: string;
   tags?: string;
 }
+
+export interface UpdateImageParams {
+  name: string;
+  url: string;
+  slug?: string;
+  tags?: string;
+  oldSlug: string;
+}
