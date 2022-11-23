@@ -46,3 +46,7 @@
 .createItem {
     background-color: var(--accent-color);
 }
+
+.deleteItem {
+    cursor: pointer;
+}

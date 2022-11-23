@@ -1,7 +1,10 @@
 import { FC } from "react";
-import styles from "./EditMenu.module.css";
+
 import { useNavigate } from "react-router-dom";
 import { useAppDispatch } from "../../hooks/redux";
+import cn from "classnames";
+
+import styles from "./EditMenu.module.css";
 import { EditMenuProps } from "./EditMenu.props";
 import { deleteGalleryImage } from "../../redux/gallery/actionCreators";
 
@@ -20,7 +23,7 @@ export const DeleteButton: FC<EditMenuProps> = ({ slug }) => {
   };
 
   return (
-    <div className={styles.item} onClick={deleteImage}>
+    <div className={cn(styles.item, styles.deleteItem)} onClick={deleteImage}>
       <svg
         className={styles.icon}
         xmlns="http://www.w3.org/2000/svg"
