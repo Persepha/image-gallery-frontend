@@ -36,6 +36,7 @@ export interface ImageDetailState {
 export interface FilterGalleryParams {
   limit: number;
   offset: number;
+  searchValue: string;
 }
 
 export interface GalleryImageParams {

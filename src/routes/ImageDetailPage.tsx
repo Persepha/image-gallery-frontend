@@ -27,9 +27,14 @@ export const ImageDetailPage: FC = () => {
 
   return (
     <>
-      <div className="ctr">{isLoading && <Loader />}</div>
       {error && <h1>{error}</h1>}
-      {imageDetail && <ImageDetail imageDetail={imageDetail} />}
+      {isLoading ? (
+        <div className="ctr">
+          <Loader />
+        </div>
+      ) : (
+        imageDetail && <ImageDetail imageDetail={imageDetail} />
+      )}
     </>
   );
 };

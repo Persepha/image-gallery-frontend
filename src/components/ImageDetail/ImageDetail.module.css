@@ -27,6 +27,30 @@
 @media only screen and (min-width: 70rem) {
     .container {
         flex-direction: row;
+
+        overflow: hidden;
+        position: fixed;
+        top: var(--header-height);
+        right: 0;
+        bottom: 0;
+        left: 0;
+        z-index: 1000;
+        -webkit-overflow-scrolling: touch;
+        outline: 0;
+        overflow-y: auto;
+    }
+
+
+    .container::-webkit-scrollbar {
+        width: 0.45rem;
+    }
+
+    .container::-webkit-scrollbar-track {
+        background: var(--primary-1-background-color);
+    }
+
+    .container::-webkit-scrollbar-thumb {
+        background: var(--accent-color);
     }
 
     .info {
@@ -39,6 +63,18 @@
         top: 0;
         right: 0;
         overflow: auto;
+    }
+
+    .info::-webkit-scrollbar {
+        width: 0.45rem;
+    }
+
+    .info::-webkit-scrollbar-track {
+        background: var(--primary-1-background-color);
+    }
+
+    .info::-webkit-scrollbar-thumb {
+        background: var(--primary-2-background-color);
     }
 }
 

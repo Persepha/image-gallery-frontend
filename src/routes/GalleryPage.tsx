@@ -7,7 +7,7 @@ import { Loader } from "../components/Loader";
 
 export const GalleryPage: FC = () => {
   const dispatch = useAppDispatch();
-  const { currentPage, offset, limit } = useAppSelector(
+  const { currentPage, offset, limit, searchValue } = useAppSelector(
     (state) => state.filterReducer
   );
 
@@ -16,12 +16,12 @@ export const GalleryPage: FC = () => {
   );
 
   const getGallery = () => {
-    dispatch(gallery({ offset, limit }));
+    dispatch(gallery({ offset, limit, searchValue }));
   };
 
   useEffect(() => {
     getGallery();
-  }, [currentPage]);
+  }, [currentPage, searchValue]);
 
   return (
     <>
