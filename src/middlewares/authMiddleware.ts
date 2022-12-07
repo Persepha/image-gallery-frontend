@@ -6,10 +6,11 @@ export const authMiddleware: Middleware = (store) => (next) => (action) => {
   if (action.type?.startsWith("auth/")) {
     const authState = store.getState().authReducer;
 
-    const { token, isAuthenticated, username, isStaff } = authState;
+    const { token, isAuthenticated, username, isStaff, avatar } = authState;
 
     localStorage.setItem("authToken", JSON.stringify(token));
     localStorage.setItem("username", JSON.stringify(username));
+    localStorage.setItem("avatar", JSON.stringify(avatar));
     localStorage.setItem("isStaff", JSON.stringify(isStaff));
     localStorage.setItem("isAuthenticated", JSON.stringify(isAuthenticated));
   }

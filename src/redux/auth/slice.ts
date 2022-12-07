@@ -10,6 +10,7 @@ const initialState: LoginState = {
   token: getItem("authToken"),
   isAuthenticated: getItem("isAuthenticated") || false,
   username: getItem("username"),
+  avatar: getItem("avatar"),
   isStaff: getItem("isStaff") || false,
 };
 
@@ -24,6 +25,7 @@ export const slice = createSlice({
       state.token = action.payload.key;
       state.isAuthenticated = true;
       state.username = action.payload.profile.username;
+      state.avatar = action.payload.profile.avatar;
       state.isStaff = action.payload.profile.is_staff;
     });
     builder.addCase(login.pending, (state) => {
@@ -43,6 +45,7 @@ export const slice = createSlice({
       state.isAuthenticated = false;
       state.isStaff = false;
       state.username = null;
+      state.avatar = null;
     });
     builder.addCase(logout.pending, (state) => {
       state.isLoading = true;
@@ -58,6 +61,7 @@ export const slice = createSlice({
       state.token = action.payload.key;
       state.isAuthenticated = true;
       state.username = action.payload.profile.username;
+      state.avatar = action.payload.profile.avatar;
       state.isStaff = action.payload.profile.is_staff;
     });
     builder.addCase(registration.pending, (state) => {

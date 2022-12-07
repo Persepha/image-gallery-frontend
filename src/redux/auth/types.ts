@@ -4,6 +4,7 @@ export interface Profile {
   id: number;
   username: string;
   is_staff: boolean;
+  avatar: string;
 }
 
 export interface LoginResponse {
@@ -15,6 +16,7 @@ export interface LoginState {
   isLoading: boolean;
   error: null | ErrorResponse;
   username: null | string;
+  avatar: null | string;
   token: null | string;
   isAuthenticated: boolean;
   isStaff: boolean;
