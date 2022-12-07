@@ -30,7 +30,6 @@
 }
 
 .divider {
-    border-left: 2px solid var(--secondary-background-color);
     height: calc(var(--header-height) * 0.6);
 }
 
@@ -89,6 +88,11 @@
 
         transform: translateX(100%);
         transition: transform 350ms ease-out;
+    }
+
+    .divider {
+        border-bottom: 2px solid var(--secondary-background-color);
+        height: 0;
     }
 
     @supports (backdrop-filter: blur(1rem)) {
@@ -174,5 +178,9 @@
     .primaryNavigation {
         padding-inline: 3rem;
         align-items: center;
+    }
+
+    .divider {
+        border-left: 2px solid var(--secondary-background-color);
     }
 }

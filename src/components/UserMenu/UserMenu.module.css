@@ -1,0 +1,46 @@
+.dropdown {
+    position: relative;
+    /*display: inline-block;*/
+
+}
+
+.dropdownContent {
+    position: absolute;
+    top: 5rem;
+    width: 15rem;
+    transform: translateX(-65%);
+    overflow: hidden;
+    border-radius: 1rem;
+    background-color: var(--primary-1-background-color);
+    border: 1px solid var(--secondary-background-color);
+}
+
+.menuItem {
+    height: 5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    transition: background 0.3s ease 0s;
+    padding: 1.5rem;
+}
+
+.menuItem:hover {
+    background-color: #242424;
+}
+
+.icon {
+    width: 2rem;
+    height: 2rem;
+    stroke: var(--secondary-background-color);
+}
+
+.userAvatar {
+    height: calc(var(--header-height) * 0.6);
+    width: calc(var(--header-height) * 0.6);
+
+    border-radius: 50%;
+
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
