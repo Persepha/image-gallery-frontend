@@ -73,3 +73,9 @@ body::-webkit-scrollbar-thumb {
     justify-content: center;
     align-items: center;
 }
+
+.highlight {
+    background-color: #CC7765;
+    border-radius: 6px;
+    padding: 3px 6px;
+}

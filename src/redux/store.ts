@@ -7,6 +7,7 @@ import {
 
 import galleryReducer from "./gallery/gallerySlice";
 import galleryImageDetailReducer from "./gallery/imageDetailSlice";
+import userProfileReducer from "./users/userProfileSlice";
 import filterReducer from "./filter/slice";
 import authReducer from "./auth/slice";
 import { authMiddleware } from "../middlewares/authMiddleware";
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   filterReducer,
   galleryImageDetailReducer,
   authReducer,
+  userProfileReducer,
 });
 
 export const store = configureStore({

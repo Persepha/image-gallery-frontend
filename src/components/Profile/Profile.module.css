@@ -1,0 +1,57 @@
+.profileSection {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 2rem;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    background-color: var(--primary-1-background-color);
+    width: clamp(50rem, 80%, 100rem);
+}
+
+.avatarSection {
+    width: 50%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.avatar {
+    max-width: 100%;
+}
+
+.info {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    padding: 2rem;
+    width: 50%;
+}
+
+
+@media (max-width: 35rem) {
+    .profile {
+        flex-direction: column;
+    }
+
+    .avatarSection {
+        width: 100%;
+    }
+}
+
+.label {
+    color: #BCBCBC;
+}
+
+
+.username {
+    font-size: 4rem;
+    text-transform: capitalize;
+    word-wrap: break-word;
+}
