@@ -7,3 +7,4 @@ export { RegistrationPage } from "./RegistrationPage";
 export { NewImagePage } from "./NewImagePage";
 export { UpdateImagePage } from "./UpdateImagePage";
 export { PersonalProfilePage } from "./PersonalProfilePage";
+export { UserProfilePage } from "./UserProfilePage";

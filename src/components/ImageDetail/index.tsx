@@ -1,9 +1,10 @@
-import { FC } from "react";
+import React, { FC } from "react";
 
 import { ImageDetailProps } from "./ImageDetail.props";
 import styles from "./ImageDetail.module.css";
 import { EditMenu } from "../EditMenu";
 import { useAppSelector } from "../../hooks/redux";
+import { Link } from "react-router-dom";
 
 export const ImageDetail: FC<ImageDetailProps> = ({ imageDetail }) => {
   const { username, isStaff } = useAppSelector((state) => state.authReducer);
@@ -22,8 +23,16 @@ export const ImageDetail: FC<ImageDetailProps> = ({ imageDetail }) => {
         />
       </div>
       <div className={styles.info}>
-        <h1>{imageDetail.name}</h1>
-        <h3>by {imageDetail.owner_username}</h3>
+        <div className={styles.imageName}>{imageDetail.name}</div>
+        <div>
+          <span className={styles.label}>by </span>
+          <Link
+            to={`/users/${imageDetail.owner_username}`}
+            className={styles.username}
+          >
+            {imageDetail.owner_username}
+          </Link>
+        </div>
         <div className={styles.tagsContainer}>
           {imageDetail.tags.map((tag) => (
             <div key={tag.id}>

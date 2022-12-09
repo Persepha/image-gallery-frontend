@@ -93,3 +93,23 @@
     transition: all 0.3s ease 0s;
     cursor: pointer;
 }
+
+.label {
+    color: #BCBCBC;
+}
+
+
+.username {
+    font-size: 2rem;
+    text-transform: capitalize;
+    word-wrap: break-word;
+    text-decoration: none;
+    color: var(--secondary-background-color);
+}
+
+.imageName {
+    font-size: 4rem;
+    text-transform: capitalize;
+    word-wrap: break-word;
+    color: var(--secondary-background-color);
+}

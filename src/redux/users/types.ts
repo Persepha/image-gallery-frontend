@@ -10,3 +10,7 @@ export interface UserProfileState {
   error: string;
   profile: Profile | null;
 }
+
+export interface UserProfileParams {
+  slug: string;
+}

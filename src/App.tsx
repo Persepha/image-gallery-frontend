@@ -11,6 +11,7 @@ import {
   NewImagePage,
   UpdateImagePage,
   PersonalProfilePage,
+  UserProfilePage,
 } from "./routes";
 
 function App() {
@@ -21,10 +22,15 @@ function App() {
         <Route path="images/create" element={<NewImagePage />} />
         <Route path="images/:slug" element={<ImageDetailPage />} />
         <Route path="images/:slug/update" element={<UpdateImagePage />} />
+
         <Route path="about" element={<div>about</div>} />
+
         <Route path="login" element={<LoginPage />} />
         <Route path="signup" element={<RegistrationPage />} />
+
         <Route path="profile" element={<PersonalProfilePage />} />
+        <Route path="users/:slug" element={<UserProfilePage />} />
+
         <Route path="*" element={<NotFoundPage />} />
       </Route>
     </Routes>
