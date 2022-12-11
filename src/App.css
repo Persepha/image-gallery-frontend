@@ -79,3 +79,9 @@ body::-webkit-scrollbar-thumb {
     border-radius: 6px;
     padding: 3px 6px;
 }
+
+a {
+    outline: none;
+    text-decoration: none;
+    color: var(--secondary-background-color);
+}

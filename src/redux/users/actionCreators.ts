@@ -1,6 +1,12 @@
 import axios from "../../axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { Profile, UserProfileParams } from "./types";
+import {
+  FilterUsersParams,
+  Profile,
+  User,
+  UserProfileParams,
+  UsersResponse,
+} from "./types";
 import { ErrorResponse } from "../../consts/api/types";
 import { PERSONAL_PROFILE_URL, USERS_URL } from "../../consts/api/apiUrl";
 import { AxiosError } from "axios";
@@ -42,6 +48,33 @@ export const userProfile = createAsyncThunk<
 
     return thunkAPI.rejectWithValue({
       message: "User profile fetch error",
+      extra: {},
+    });
+  }
+});
+
+export const users = createAsyncThunk<
+  UsersResponse<User>,
+  FilterUsersParams,
+  { rejectValue: ErrorResponse }
+>("users/fetchAll", async (args, thunkAPI) => {
+  try {
+    const { data } = await axios.get<UsersResponse<User>>(USERS_URL, {
+      params: {
+        limit: args.limit,
+        offset: args.offset,
+        username: args.searchValue,
+      },
+    });
+    return data;
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      const message = error.response && error.response.data;
+      return thunkAPI.rejectWithValue(message);
+    }
+
+    return thunkAPI.rejectWithValue({
+      message: "Users fetch error",
       extra: {},
     });
   }

@@ -43,6 +43,9 @@ export const Navbar: FC = () => {
             <NavbarLink toRoute="/">home</NavbarLink>
           </li>
           <li>
+            <NavbarLink toRoute="users">users</NavbarLink>
+          </li>
+          <li>
             <NavbarLink toRoute="about">about</NavbarLink>
           </li>
           <li>

@@ -24,10 +24,16 @@ export const slice = createSlice({
     setSearchValue(state, action: PayloadAction<string>) {
       state.searchValue = action.payload;
     },
+    resetFilter: () => initialState,
   },
 });
 
-export const { setCurrentPage, setOffset, setLimit, setSearchValue } =
-  slice.actions;
+export const {
+  setCurrentPage,
+  setOffset,
+  setLimit,
+  setSearchValue,
+  resetFilter,
+} = slice.actions;
 
 export default slice.reducer;

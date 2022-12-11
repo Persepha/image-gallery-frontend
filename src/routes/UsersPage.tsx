@@ -1,31 +1,31 @@
 import { FC, useEffect } from "react";
 import { useAppDispatch, useAppSelector } from "../hooks/redux";
-import { gallery } from "../redux/gallery/actionCreators";
-import { Gallery } from "../components";
-import { Pagination } from "../components/Pagination";
-import { Loader } from "../components/Loader";
 import { resetFilter } from "../redux/filter/slice";
+import { Loader } from "../components/Loader";
+import { Pagination } from "../components/Pagination";
+import { Users } from "../components/Users";
+import { users } from "../redux/users/actionCreators";
 
-export const GalleryPage: FC = () => {
+export const UsersPage: FC = () => {
   const dispatch = useAppDispatch();
   const { currentPage, offset, limit, searchValue } = useAppSelector(
     (state) => state.filterReducer
   );
 
   const { error, isLoading, data } = useAppSelector(
-    (state) => state.galleryReducer
+    (state) => state.usersReducer
   );
-
-  const getGallery = () => {
-    dispatch(gallery({ offset, limit, searchValue }));
-  };
 
   useEffect(() => {
     dispatch(resetFilter());
   }, []);
 
+  const getUsers = () => {
+    dispatch(users({ offset, limit, searchValue }));
+  };
+
   useEffect(() => {
-    getGallery();
+    getUsers();
   }, [currentPage, searchValue]);
 
   return (
@@ -34,7 +34,7 @@ export const GalleryPage: FC = () => {
       {error && <h1>{error}</h1>}
       {data && (
         <>
-          <Gallery images={data.results} />
+          <Users users={data.results} />
           <Pagination limit={20} count={data.count} />
         </>
       )}

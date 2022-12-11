@@ -52,4 +52,7 @@
     color: #fff;
 }
 
+:global(li.disabled) {
+    display: none;
+}
 

@@ -1,0 +1,51 @@
+.profile {
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    background-color: var(--primary-1-background-color);
+
+    height: 30rem;
+
+    cursor: pointer;
+    transition: .3s;
+
+
+}
+
+.profile:hover {
+    box-shadow: 0 0 18px 0 var(--accent-color);
+}
+
+.profile:hover .username {
+    color: var(--accent-color);
+}
+
+.avatarSection {
+    height: 80%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    overflow: hidden;
+}
+
+.avatar {
+    max-width: 100%;
+    height: auto;
+}
+
+.info {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem;
+}
+
+.username {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}

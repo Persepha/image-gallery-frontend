@@ -8,3 +8,4 @@ export { NewImagePage } from "./NewImagePage";
 export { UpdateImagePage } from "./UpdateImagePage";
 export { PersonalProfilePage } from "./PersonalProfilePage";
 export { UserProfilePage } from "./UserProfilePage";
+export { UsersPage } from "./UsersPage";
