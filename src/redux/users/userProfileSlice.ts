@@ -1,6 +1,10 @@
 import { UserProfileState } from "./types";
 import { createSlice } from "@reduxjs/toolkit";
-import { personalUserProfile, userProfile } from "./actionCreators";
+import {
+  personalUserProfile,
+  updateUserProfile,
+  userProfile,
+} from "./actionCreators";
 
 const initialState: UserProfileState = {
   error: "",
@@ -36,6 +40,20 @@ export const userProfileSlice = createSlice({
       state.isLoading = true;
     });
     builder.addCase(userProfile.rejected, (state, action) => {
+      state.isLoading = false;
+      state.profile = null;
+      state.error = action.payload?.message!;
+    });
+
+    builder.addCase(updateUserProfile.fulfilled, (state, action) => {
+      state.isLoading = false;
+      state.error = "";
+      state.profile = action.payload;
+    });
+    builder.addCase(updateUserProfile.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(updateUserProfile.rejected, (state, action) => {
       state.isLoading = false;
       state.profile = null;
       state.error = action.payload?.message!;

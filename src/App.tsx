@@ -13,6 +13,7 @@ import {
   PersonalProfilePage,
   UserProfilePage,
   UsersPage,
+  UpdateUserProfilePage,
 } from "./routes";
 
 function App() {
@@ -30,6 +31,7 @@ function App() {
         <Route path="signup" element={<RegistrationPage />} />
 
         <Route path="profile" element={<PersonalProfilePage />} />
+        <Route path="profile/update" element={<UpdateUserProfilePage />} />
         <Route path="users" element={<UsersPage />} />
         <Route path="users/:slug" element={<UserProfilePage />} />
 

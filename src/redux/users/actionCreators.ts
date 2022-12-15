@@ -3,6 +3,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import {
   FilterUsersParams,
   Profile,
+  UpdateProfileParams,
   User,
   UserProfileParams,
   UsersResponse,
@@ -48,6 +49,27 @@ export const userProfile = createAsyncThunk<
 
     return thunkAPI.rejectWithValue({
       message: "User profile fetch error",
+      extra: {},
+    });
+  }
+});
+
+export const updateUserProfile = createAsyncThunk<
+  Profile,
+  UpdateProfileParams,
+  { rejectValue: ErrorResponse }
+>("users/updateUserProfile", async (args, thunkAPI) => {
+  try {
+    const { data } = await axios.patch<Profile>(PERSONAL_PROFILE_URL, args);
+    return data;
+  } catch (error) {
+    if (error instanceof AxiosError) {
+      const message = error.response && error.response.data;
+      return thunkAPI.rejectWithValue(message);
+    }
+
+    return thunkAPI.rejectWithValue({
+      message: "User profile update error",
       extra: {},
     });
   }

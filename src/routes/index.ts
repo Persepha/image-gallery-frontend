@@ -9,3 +9,4 @@ export { UpdateImagePage } from "./UpdateImagePage";
 export { PersonalProfilePage } from "./PersonalProfilePage";
 export { UserProfilePage } from "./UserProfilePage";
 export { UsersPage } from "./UsersPage";
+export { UpdateUserProfilePage } from "./UpdateUserProfilePage";

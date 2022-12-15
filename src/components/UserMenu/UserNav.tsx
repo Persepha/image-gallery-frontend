@@ -74,7 +74,7 @@ export const UserNav: FC = () => {
                     </svg>
                     profile
                   </Link>
-                  <div className={styles.menuItem}>
+                  <Link to="/profile/update" className={styles.menuItem}>
                     <svg
                       className={styles.icon}
                       xmlns="http://www.w3.org/2000/svg"
@@ -98,7 +98,7 @@ export const UserNav: FC = () => {
                       <line x1="17" y1="16" x2="23" y2="16"></line>
                     </svg>
                     edit
-                  </div>
+                  </Link>
                   <div className={styles.menuItem} onClick={handleLogout}>
                     <svg
                       className={styles.icon}

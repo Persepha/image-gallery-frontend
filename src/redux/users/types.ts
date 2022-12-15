@@ -5,6 +5,11 @@ export interface Profile {
   is_staff: boolean;
 }
 
+export interface UpdateProfileParams {
+  username?: string;
+  avatar?: string;
+}
+
 export interface UserProfileState {
   isLoading: boolean;
   error: string;

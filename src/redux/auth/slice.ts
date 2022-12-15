@@ -1,4 +1,4 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 import { login, logout, registration } from "./actionCreators";
 import { getItem } from "../../utils/storage";
@@ -17,7 +17,11 @@ const initialState: LoginState = {
 export const slice = createSlice({
   name: "auth",
   initialState,
-  reducers: {},
+  reducers: {
+    setAvatar(state, action: PayloadAction<string>) {
+      state.avatar = action.payload;
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(login.fulfilled, (state, action) => {
       state.isLoading = false;
@@ -75,5 +79,7 @@ export const slice = createSlice({
     });
   },
 });
+
+export const { setAvatar } = slice.actions;
 
 export default slice.reducer;

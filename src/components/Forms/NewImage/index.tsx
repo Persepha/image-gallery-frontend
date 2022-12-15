@@ -35,12 +35,12 @@ export const NewImage: FC<NewImageProps> = ({ isUpdateImage, imageDetail }) => {
       setValue("slug", imageDetail.slug);
       setValue("tags", imageDetail.tags.map((tag) => tag.title).join(", "));
     }
-  });
+  }, []);
 
   const onSubmit: SubmitHandler<NewImageFormInput> = async (data) => {
     const formValues = { ...data };
 
-    if (formValues.slug === "") {
+    if (formValues.slug === "" || formValues.slug === imageDetail?.slug) {
       delete formValues.slug;
     }
     if (formValues.tags === "") {
@@ -126,7 +126,9 @@ export const NewImage: FC<NewImageProps> = ({ isUpdateImage, imageDetail }) => {
           <div className={cn(styles.invalid, styles.container)}>{error}</div>
         )}
 
-        <h1 className={styles.info}>Create new image</h1>
+        <h1 className={styles.info}>
+          {isUpdateImage ? "Update" : "Create new"} image
+        </h1>
 
         <form onSubmit={handleSubmit(onSubmit)}>
           <div
