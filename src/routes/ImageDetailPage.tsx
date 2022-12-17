@@ -4,8 +4,8 @@ import { useParams } from "react-router-dom";
 import { useAppDispatch, useAppSelector } from "../hooks/redux";
 
 import { galleryImage } from "../redux/gallery/actionCreators";
-import { Loader } from "../components/Loader";
 import { ImageDetail } from "../components/ImageDetail";
+import { StatusMessage } from "../components/StatusMessage";
 
 export const ImageDetailPage: FC = () => {
   const dispatch = useAppDispatch();
@@ -25,16 +25,9 @@ export const ImageDetailPage: FC = () => {
     getImageDetail();
   }, []);
 
-  return (
-    <>
-      {error && <h1>{error}</h1>}
-      {isLoading ? (
-        <div className="ctr">
-          <Loader />
-        </div>
-      ) : (
-        imageDetail && <ImageDetail imageDetail={imageDetail} />
-      )}
-    </>
+  return error || !imageDetail || isLoading ? (
+    <StatusMessage error={error} errorMessage={error} isLoading={isLoading} />
+  ) : (
+    <ImageDetail imageDetail={imageDetail} />
   );
 };

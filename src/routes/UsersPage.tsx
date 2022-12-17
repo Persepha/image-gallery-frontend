@@ -1,10 +1,12 @@
 import { FC, useEffect } from "react";
+
 import { useAppDispatch, useAppSelector } from "../hooks/redux";
+
 import { resetFilter } from "../redux/filter/slice";
-import { Loader } from "../components/Loader";
 import { Pagination } from "../components/Pagination";
 import { Users } from "../components/Users";
 import { users } from "../redux/users/actionCreators";
+import { StatusMessage } from "../components/StatusMessage";
 
 export const UsersPage: FC = () => {
   const dispatch = useAppDispatch();
@@ -28,16 +30,25 @@ export const UsersPage: FC = () => {
     getUsers();
   }, [currentPage, searchValue]);
 
-  return (
+  const isNothing = () => {
+    if (data) {
+      return data.results.length === 0;
+    }
+    return true;
+  };
+
+  return error || isLoading || isNothing() || !data ? (
+    <StatusMessage
+      error={error}
+      errorMessage={error}
+      isLoading={isLoading}
+      isNothing={isNothing()}
+      nothingMessage="No user to display..."
+    />
+  ) : (
     <>
-      <div className="ctr">{isLoading && <Loader />}</div>
-      {error && <h1>{error}</h1>}
-      {data && (
-        <>
-          <Users users={data.results} />
-          <Pagination limit={20} count={data.count} />
-        </>
-      )}
+      <Users users={data.results} />
+      <Pagination limit={20} count={data.count} />
     </>
   );
 };

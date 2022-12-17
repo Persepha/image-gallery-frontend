@@ -6,7 +6,7 @@ import { useAppDispatch, useAppSelector } from "../hooks/redux";
 import { selectAuthentecatedState } from "../redux/auth/selectors";
 import { NewImage } from "../components";
 import { galleryImage } from "../redux/gallery/actionCreators";
-import { Loader } from "../components/Loader";
+import { StatusMessage } from "../components/StatusMessage";
 
 export const UpdateImagePage: FC = () => {
   const dispatch = useAppDispatch();
@@ -35,17 +35,9 @@ export const UpdateImagePage: FC = () => {
     getImageDetail();
   }, []);
 
-  return (
-    <>
-      {isLoading && (
-        <div className="ctr">
-          <Loader />
-        </div>
-      )}
-      {error && <h1>{error}</h1>}
-      {imageDetail && (
-        <NewImage isUpdateImage={true} imageDetail={imageDetail} />
-      )}
-    </>
+  return error || !imageDetail || isLoading ? (
+    <StatusMessage error={error} errorMessage={error} isLoading={isLoading} />
+  ) : (
+    <NewImage isUpdateImage={true} imageDetail={imageDetail} />
   );
 };

@@ -1,9 +1,11 @@
 import { FC, useEffect } from "react";
+
 import { useAppDispatch, useAppSelector } from "../hooks/redux";
 import { useParams } from "react-router-dom";
+
 import { userProfile } from "../redux/users/actionCreators";
-import { Loader } from "../components/Loader";
 import { Profile } from "../components";
+import { StatusMessage } from "../components/StatusMessage";
 
 export const UserProfilePage: FC = () => {
   const dispatch = useAppDispatch();
@@ -23,16 +25,9 @@ export const UserProfilePage: FC = () => {
     getUserProfile();
   }, []);
 
-  return (
-    <>
-      {error && <h1>{error}</h1>}
-      {isLoading ? (
-        <div className="ctr">
-          <Loader />
-        </div>
-      ) : (
-        profile && <Profile profile={profile} />
-      )}
-    </>
+  return error || !profile || isLoading ? (
+    <StatusMessage error={error} errorMessage={error} isLoading={isLoading} />
+  ) : (
+    <Profile profile={profile} />
   );
 };

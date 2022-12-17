@@ -1,10 +1,12 @@
 import { FC, useEffect } from "react";
+
 import { useAppDispatch, useAppSelector } from "../hooks/redux";
 import { useNavigate } from "react-router-dom";
+
 import { selectAuthentecatedState } from "../redux/auth/selectors";
 import { personalUserProfile } from "../redux/users/actionCreators";
-import { Loader } from "../components/Loader";
 import { UpdateProfile } from "../components/Forms/UpdateProfile";
+import { StatusMessage } from "../components/StatusMessage";
 
 export const UpdateUserProfilePage: FC = () => {
   const dispatch = useAppDispatch();
@@ -26,15 +28,9 @@ export const UpdateUserProfilePage: FC = () => {
     dispatch(personalUserProfile());
   }, []);
 
-  return (
-    <>
-      {isLoading && (
-        <div className="ctr">
-          <Loader />
-        </div>
-      )}
-      {error && <h1>{error}</h1>}
-      {profile && <UpdateProfile />}
-    </>
+  return error || !profile || isLoading ? (
+    <StatusMessage error={error} errorMessage={error} isLoading={isLoading} />
+  ) : (
+    <UpdateProfile />
   );
 };

@@ -1,10 +1,12 @@
 import { FC, useEffect } from "react";
+
 import { useAppDispatch, useAppSelector } from "../hooks/redux";
+
 import { gallery } from "../redux/gallery/actionCreators";
 import { Gallery } from "../components";
 import { Pagination } from "../components/Pagination";
-import { Loader } from "../components/Loader";
 import { resetPagination } from "../redux/filter/slice";
+import { StatusMessage } from "../components/StatusMessage";
 
 export const GalleryPage: FC = () => {
   const dispatch = useAppDispatch();
@@ -28,16 +30,25 @@ export const GalleryPage: FC = () => {
     getGallery();
   }, [currentPage, searchValue]);
 
-  return (
+  const isNothing = () => {
+    if (data) {
+      return data.results.length === 0;
+    }
+    return true;
+  };
+
+  return error || isLoading || isNothing() || !data ? (
+    <StatusMessage
+      error={error}
+      errorMessage={error}
+      isLoading={isLoading}
+      isNothing={isNothing()}
+      nothingMessage="No image to display..."
+    />
+  ) : (
     <>
-      <div className="ctr">{isLoading && <Loader />}</div>
-      {error && <h1>{error}</h1>}
-      {data && (
-        <>
-          <Gallery images={data.results} />
-          <Pagination limit={20} count={data.count} />
-        </>
-      )}
+      <Gallery images={data.results} />
+      <Pagination limit={20} count={data.count} />
     </>
   );
 };
