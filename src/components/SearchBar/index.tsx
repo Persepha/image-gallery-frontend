@@ -2,12 +2,14 @@ import React, { FC, useEffect, useState } from "react";
 
 import styles from "./SearchBar.module.css";
 import { useDebounce } from "../../hooks/useDebounce";
-import { useAppDispatch } from "../../hooks/redux";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux";
 import { setSearchValue } from "../../redux/filter/slice";
 
 export const SearchBar: FC = () => {
   const dispatch = useAppDispatch();
   const [value, setValue] = useState<string>("");
+
+  const { searchValue } = useAppSelector((state) => state.filterReducer);
 
   const debouncedValue = useDebounce(value, 300);
 
@@ -18,6 +20,10 @@ export const SearchBar: FC = () => {
   useEffect(() => {
     dispatch(setSearchValue(debouncedValue));
   }, [debouncedValue]);
+
+  useEffect(() => {
+    setValue(searchValue);
+  }, [searchValue]);
 
   return (
     <div className={styles.searchGroup}>
@@ -38,6 +44,7 @@ export const SearchBar: FC = () => {
       </svg>
       <input
         type="search"
+        value={value}
         onChange={onChangeInput}
         placeholder="Search"
         className={styles.input}

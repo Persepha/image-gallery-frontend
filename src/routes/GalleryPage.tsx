@@ -4,7 +4,7 @@ import { gallery } from "../redux/gallery/actionCreators";
 import { Gallery } from "../components";
 import { Pagination } from "../components/Pagination";
 import { Loader } from "../components/Loader";
-import { resetFilter } from "../redux/filter/slice";
+import { resetPagination } from "../redux/filter/slice";
 
 export const GalleryPage: FC = () => {
   const dispatch = useAppDispatch();
@@ -21,7 +21,7 @@ export const GalleryPage: FC = () => {
   };
 
   useEffect(() => {
-    dispatch(resetFilter());
+    dispatch(resetPagination());
   }, []);
 
   useEffect(() => {

@@ -25,6 +25,11 @@ export const slice = createSlice({
       state.searchValue = action.payload;
     },
     resetFilter: () => initialState,
+    resetPagination(state) {
+      state.currentPage = initialState.currentPage;
+      state.limit = initialState.limit;
+      state.offset = initialState.offset;
+    },
   },
 });
 
@@ -34,6 +39,7 @@ export const {
   setLimit,
   setSearchValue,
   resetFilter,
+  resetPagination,
 } = slice.actions;
 
 export default slice.reducer;

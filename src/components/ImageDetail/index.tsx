@@ -3,11 +3,22 @@ import React, { FC } from "react";
 import { ImageDetailProps } from "./ImageDetail.props";
 import styles from "./ImageDetail.module.css";
 import { EditMenu } from "../EditMenu";
-import { useAppSelector } from "../../hooks/redux";
-import { Link } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux";
+import { Link, useNavigate } from "react-router-dom";
+import { setSearchValue } from "../../redux/filter/slice";
 
 export const ImageDetail: FC<ImageDetailProps> = ({ imageDetail }) => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const { username, isStaff } = useAppSelector((state) => state.authReducer);
+
+  function tagClickHandler(event: React.MouseEvent) {
+    const tagTitle = event.currentTarget.getAttribute("data-title");
+    if (tagTitle) {
+      dispatch(setSearchValue(tagTitle));
+      navigate("/");
+    }
+  }
 
   return (
     <div className={styles.container}>
@@ -36,7 +47,13 @@ export const ImageDetail: FC<ImageDetailProps> = ({ imageDetail }) => {
         <div className={styles.tagsContainer}>
           {imageDetail.tags.map((tag) => (
             <div key={tag.id}>
-              <span className={styles.highlight}>{tag.title}</span>
+              <span
+                className={styles.highlight}
+                data-title={tag.title}
+                onClick={tagClickHandler}
+              >
+                {tag.title}
+              </span>
             </div>
           ))}
         </div>
