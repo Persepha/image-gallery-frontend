@@ -4,7 +4,11 @@ import { getItem } from "./utils/storage";
 const instance = axios.create();
 
 instance.interceptors.request.use(function (config) {
-  (config.headers ??= {}).Authorization = "Token " + getItem("authToken");
+  const token = getItem("authToken");
+
+  if (token) {
+    (config.headers ??= {}).Authorization = `Token ${token}`;
+  }
 
   return config;
 });
