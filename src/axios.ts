@@ -3,11 +3,10 @@ import { getItem } from "./utils/storage";
 
 const instance = axios.create();
 
-const isAuthenticated = getItem("isAuthenticated");
+instance.interceptors.request.use(function (config) {
+  (config.headers ??= {}).Authorization = "Token " + getItem("authToken");
 
-if (isAuthenticated) {
-  instance.defaults.headers.common["Authorization"] =
-    "Token " + getItem("authToken");
-}
+  return config;
+});
 
 export default instance;
