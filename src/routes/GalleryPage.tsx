@@ -48,7 +48,7 @@ export const GalleryPage: FC = () => {
   ) : (
     <>
       <Gallery images={data.results} />
-      <Pagination limit={20} count={data.count} />
+      <Pagination count={data.count} />
     </>
   );
 };

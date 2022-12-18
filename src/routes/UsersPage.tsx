@@ -48,7 +48,7 @@ export const UsersPage: FC = () => {
   ) : (
     <>
       <Users users={data.results} />
-      <Pagination limit={20} count={data.count} />
+      <Pagination count={data.count} />
     </>
   );
 };

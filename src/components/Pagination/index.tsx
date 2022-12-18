@@ -1,32 +1,31 @@
-import { FC, useEffect } from "react";
+import { FC } from "react";
 
 import ReactPaginate from "react-paginate";
 
 import { PaginationProps } from "./Pagination.props";
-import { useAppDispatch } from "../../hooks/redux";
-import { setCurrentPage, setLimit, setOffset } from "../../redux/filter/slice";
+import { useAppDispatch, useAppSelector } from "../../hooks/redux";
+import { setCurrentPage, setOffset } from "../../redux/filter/slice";
 import styles from "./Pagination.module.css";
 
-export const Pagination: FC<PaginationProps> = ({ limit, count }) => {
+export const Pagination: FC<PaginationProps> = ({ count }) => {
   const dispatch = useAppDispatch();
 
-  useEffect(() => {
-    dispatch(setLimit(limit));
-  }, []);
+  const { limit, currentPage } = useAppSelector((state) => state.filterReducer);
 
   const pageCount = Math.ceil(count / limit);
 
   const handlePageClick = (event: { selected: number }) => {
     const newOffset = event.selected * limit;
 
-    dispatch(setCurrentPage(event.selected + 1));
     dispatch(setOffset(newOffset));
+    dispatch(setCurrentPage(event.selected + 1));
   };
 
   return (
     <div className={styles.container}>
       <ReactPaginate
         className={styles.pagination}
+        forcePage={currentPage - 1}
         breakLabel="..."
         nextLabel=">"
         onPageChange={handlePageClick}
