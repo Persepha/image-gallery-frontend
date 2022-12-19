@@ -43,9 +43,6 @@ export const NewImage: FC<NewImageProps> = ({ isUpdateImage, imageDetail }) => {
     if (formValues.slug === "" || formValues.slug === imageDetail?.slug) {
       delete formValues.slug;
     }
-    if (formValues.tags === "") {
-      delete formValues.tags;
-    }
 
     const result = isUpdateImage
       ? await dispatch(
