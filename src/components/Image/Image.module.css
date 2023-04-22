@@ -22,3 +22,44 @@
 .image:hover .imageEditButtons {
     opacity: 1;
 }
+
+.image:hover .tagsContainer {
+    opacity: 1;
+}
+
+.highlight {
+    background-color: var(--accent-color);
+    border-radius: 6px;
+    padding: 3px 6px;
+    font-size: 2rem;
+    transition: all 0.3s ease 0s;
+    cursor: pointer;
+}
+
+.tagsContainer{
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 0.5rem;
+
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem 1rem;
+    overflow-x: auto;
+    opacity: 0;
+    background: linear-gradient(0deg, rgba(0, 0, 0, 1) 0%, rgba(255, 255 ,255 , 0) 100%);
+    transition: all 0.15s;
+}
+
+.tagsContainer::-webkit-scrollbar {
+    height: 0.5rem;
+}
+
+.tagsContainer::-webkit-scrollbar-track {
+    background: var(--primary-1-background-color);
+}
+
+.tagsContainer::-webkit-scrollbar-thumb {
+    background: var(--accent-color);
+}

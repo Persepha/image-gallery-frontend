@@ -16,6 +16,7 @@ export const Gallery: FC<GalleryProps> = ({ images }) => {
           name={image.name}
           slug={image.slug}
           url={image.url}
+          tags={image.tags}
           isEditable={isStaff || username === image.owner_username}
         />
       ))}
