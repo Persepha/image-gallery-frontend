@@ -21,7 +21,7 @@ export const gallery = createAsyncThunk<
       params: {
         limit: args.limit,
         offset: args.offset,
-        tags: args.searchValue,
+        search: args.searchValue,
       },
     });
     return data;
