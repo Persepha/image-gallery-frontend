@@ -12,6 +12,35 @@ Backend part of project
 [Backend image gallery](https://github.com/Persepha/image-gallery)
 
 
+## Screenshots
+
+Gallery
+
+![App Screenshot](preview/3.png)
+
+Gallery image
+
+![App Screenshot](preview/4.png)
+
+Image detail
+
+![App Screenshot](preview/5.png)
+
+User profile page
+
+![App Screenshot](preview/1.png)
+
+Users
+
+![App Screenshot](preview/2.PNG)
+
+Mobile image detail page
+
+![App Screenshot](preview/6.PNG)
+
+![App Screenshot](preview/7.PNG)
+
+
 ##  Built in
 - React
 - Redux
@@ -54,40 +83,3 @@ Start the frontend server
 ```bash
   npm start
 ```
-
-
-## Screenshots
-
-Gallery
-
-![App Screenshot](preview/3.png)
-
-Gallery image
-
-![App Screenshot](preview/4.png)
-
-Image detail
-
-![App Screenshot](preview/5.png)
-
-User profile page
-
-![App Screenshot](preview/1.png)
-
-Users
-
-![App Screenshot](preview/2.png)
-
-Mobile image detail page
-
-![App Screenshot](preview/6.png)
-
-![App Screenshot](preview/7.png)
-
-
-
-
-
-
-
-
